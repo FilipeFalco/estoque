@@ -1,18 +1,18 @@
 import { Button, Checkbox, Col, Form, Input, message, Row } from 'antd';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../services/supabase';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/useAuth';
 
 const Login = () => {
+  const { signIn } = useAuth();
   const history = useNavigate();
 
   const onFinish = async (values: { email: string; password: string }) => {
-    const error = await supabase.auth.signIn({
+    const { error } = await signIn({
       email: values.email,
       password: values.password,
     });
-
-    if (error.error) {
+    if (error) {
       message.error('Erro ao realizar login!');
       console.log(error);
     } else {

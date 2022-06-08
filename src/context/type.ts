@@ -1,14 +1,16 @@
+import { ApiError, Session, User, UserCredentials } from '@supabase/supabase-js';
+
 export interface IUser {
   email?: string;
   password?: string;
 }
-
-export interface IContext extends IUser {
-  authenticate: (email: string, password: string) => Promise<void>;
-  logout: () => void;
+export interface IAuthProvider {
+  // eslint-disable-next-line no-undef
+  children: JSX.Element;
 }
-
-export type LoginInterface = {
-  email: string;
-  password: string;
-};
+export interface IContext extends IUser {
+  signUp: any;
+  signIn: any;
+  signOut: any;
+  user: User | null | undefined;
+}

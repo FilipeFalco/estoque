@@ -1,3 +1,3 @@
 export type ChildrenLayout = {
-  children: React.ReactNode;
+  children: JSX.Element;
 };
