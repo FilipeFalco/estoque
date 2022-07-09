@@ -8,9 +8,9 @@ export interface IAuthProvider {
   // eslint-disable-next-line no-undef
   children: JSX.Element;
 }
-export interface IContext extends IUser {
+export interface IContext {
   signUp: any;
   signIn: any;
   signOut: any;
-  user: User | null | undefined;
+  user: any | null | undefined;
 }
