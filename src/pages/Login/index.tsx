@@ -1,10 +1,10 @@
 import { Button, Checkbox, Col, Form, Input, message, Row } from 'antd';
 import { supabase } from '../../services/supabase';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
 
 const Login = () => {
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
   const history = useNavigate();
 
   const onFinish = async (values: { email: string; password: string }) => {
@@ -20,6 +20,10 @@ const Login = () => {
       history('/');
     }
   };
+
+  if (user) {
+    return <Navigate to='/' />;
+  }
 
   return (
     <Row align='middle' style={{ height: '100vh' }}>

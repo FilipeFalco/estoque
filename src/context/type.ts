@@ -1,8 +1,14 @@
 import { ApiError, Session, User, UserCredentials } from '@supabase/supabase-js';
 
-export interface IUser {
+export interface IUserAuth {
   email?: string;
   password?: string;
+}
+export interface IUser {
+  email: string,
+  id: string,
+  phone: string,
+  role: string
 }
 export interface IAuthProvider {
   // eslint-disable-next-line no-undef
@@ -12,5 +18,5 @@ export interface IContext {
   signUp: any;
   signIn: any;
   signOut: any;
-  user: any | null | undefined;
+  user: IUser | null | undefined;
 }

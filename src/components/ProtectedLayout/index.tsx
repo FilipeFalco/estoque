@@ -8,5 +8,5 @@ export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
     return <Navigate to='/login' />;
   }
 
-  return {user, children};
+  return children;
 };

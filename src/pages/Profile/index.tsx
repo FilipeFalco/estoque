@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Bem-vindo, {user}</h1>
+      <h1>Bem-vindo, {user?.email}</h1>
       <button onClick={handleSignOut}>Sair</button>
     </div>
   );
