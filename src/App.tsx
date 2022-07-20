@@ -1,5 +1,6 @@
 import 'antd/dist/antd.dark.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
 import { ProtectedLayout } from './components/ProtectedLayout';
 import { AuthProvider } from './context/Auth';
 import ListItems from './pages/ListItems';
@@ -13,13 +14,32 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route element={<ListItems />} />
-            <Route element={<Login />} path={'login'} />
-            <Route element={<Register />} path={'register'} />
             <Route
               element={
                 <ProtectedLayout>
-                  <Profile />
+                  <Layout>
+                    <ListItems />
+                  </Layout>
+                </ProtectedLayout>
+              }
+              path={'/'}
+            />
+            <Route element={<Login />} path={'login'} />
+
+            <Route
+              element={
+                <ProtectedLayout>
+                  <Register />
+                </ProtectedLayout>
+              }
+              path={'register'}
+            />
+            <Route
+              element={
+                <ProtectedLayout>
+                  <Layout>
+                    <Profile />
+                  </Layout>
                 </ProtectedLayout>
               }
               path={'profile'}
